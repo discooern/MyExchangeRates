@@ -9,7 +9,7 @@
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -20,14 +20,22 @@
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <ListView Grid.Column="0" Grid.Row="1" Grid.RowSpan="6">
-            
+        <!-- Binds list of Rates to a listview and displays their key.values and rate.values in seperate columns -->
+        <ListView Grid.Column="0" Grid.Row="1" Grid.RowSpan="6" ItemsSource="{Binding listRates}" SelectedItem="{Binding rate}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Key" Width="45" DisplayMemberBinding="{Binding key}"></GridViewColumn>
+                    <GridViewColumn Header="Value" Width="100" DisplayMemberBinding="{Binding value}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
         </ListView>
-        <Label Grid.Column="1" Grid.Row="1" Content="010101" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
-        <Label Grid.Column="1" Grid.Row="2" Content="020202" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
-        <Label Grid.Column="1" Grid.Row="3" Content="030303" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
-        <Label Grid.Column="1" Grid.Row="4" Content="040404" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
-        <Label Grid.Column="1" Grid.Row="5" Content="050505" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
-        <Label Grid.Column="1" Grid.Row="6" Content="060606" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
+        <!-- Binds properties values to text label -->
+        <Label Grid.Column="1" Grid.Row="1" Content="{Binding rate.disclaimer}" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
+        <Label Grid.Column="1" Grid.Row="0" Content="{Binding rate.rateDK}" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
+        <Label Grid.Column="1" Grid.Row="2" Content="{Binding rate.license}" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
+        <Label Grid.Column="1" Grid.Row="3" Content="{Binding rate.strDateTime}" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
+        <Label Grid.Column="1" Grid.Row="4" Content="{Binding rate.Base}" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
+        <Label Grid.Column="1" Grid.Row="5" Content="{Binding rate.key}" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
+        <Label Grid.Column="1" Grid.Row="6" Content="{Binding rate.value}" VerticalAlignment="Center" HorizontalContentAlignment="Right" FontSize="16" Margin="15"></Label>
     </Grid>
 </Window>
